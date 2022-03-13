@@ -1,0 +1,50 @@
+basePath: /user
+consumes:
+- application/json
+definitions:
+  User:
+    description: structure of User
+    properties:
+      _id:
+        type: string
+        x-go-name: ID
+      email:
+        type: string
+        x-go-name: Email
+      fullname:
+        type: string
+        x-go-name: Fullname
+      password:
+        type: string
+        x-go-name: Password
+      username:
+        type: string
+        x-go-name: Username
+    type: object
+    x-go-package: example.com/go_micorservices/users
+info:
+  description: Documentation for user API
+  title: of User API
+  version: 1.0.0
+paths:
+  /users:
+    get:
+      description: Returns a list of users
+      operationId: ListUsers
+      responses:
+        "200":
+          $ref: '#/responses/usersResponse'
+      tags:
+      - users
+produces:
+- application/json
+responses:
+  usersResponse:
+    description: A list of users that return in the response
+    schema:
+      items:
+        $ref: '#/definitions/User'
+      type: array
+schemes:
+- http
+swagger: "2.0"
